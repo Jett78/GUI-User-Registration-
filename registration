@@ -1,0 +1,74 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+ 
+
+class registration extends JFrame 
+{
+     JTextField t1,t2,t3;  
+	
+        
+          registration()
+          
+         {
+         	getContentPane().setLayout(null);
+         	
+         	JLabel topic = new JLabel("Registration Form");  
+         	topic.setFont(new Font("Tahoma", Font.BOLD, 40));
+         	topic.setBounds(232, 43, 375, 76);
+         	getContentPane().add(topic);
+         	
+         	JLabel fullname = new JLabel("Full name");
+         	fullname.setFont(new Font("Tahoma", Font.BOLD, 20));
+         	fullname.setBounds(32, 165, 148, 39);
+         	getContentPane().add(fullname);
+         	
+         	JLabel address = new JLabel("Address");
+         	address.setFont(new Font("Tahoma", Font.BOLD, 20));
+         	address.setBounds(32, 228, 148, 39);
+         	getContentPane().add(address);
+         	
+         	JLabel cell = new JLabel("Cell number");
+         	cell.setFont(new Font("Tahoma", Font.BOLD, 20));
+         	cell.setBounds(32, 292, 148, 39);
+         	getContentPane().add(cell);
+         	
+         	JLabel faculty = new JLabel("Faculty");
+         	faculty.setFont(new Font("Tahoma", Font.BOLD, 20));
+         	faculty.setBounds(32, 364, 148, 39);
+         	getContentPane().add(faculty);
+         	
+         	t1 = new JTextField();
+         	t1.setBounds(214, 164, 342, 49);
+         	getContentPane().add(t1);
+         	t1.setColumns(10);
+         	
+         	t3 = new JTextField();
+         	t3.setColumns(10);
+         	t3.setBounds(214, 291, 342, 49);
+         	getContentPane().add(t3);
+         	
+         	t2 = new JTextField();
+         	t2.setColumns(10);
+         	t2.setBounds(214, 227, 342, 49);
+         	getContentPane().add(t2);
+         	
+         	JComboBox combo = new JComboBox();
+         	combo.setFont(new Font("Tahoma", Font.BOLD, 17));
+         	combo.setModel(new DefaultComboBoxModel(new String[] {"BIM", "BBA", "BBS", "BCA", "BBM"}));
+         	combo.setBounds(214, 362, 111, 49);
+         	getContentPane().add(combo);
+         	
+         	JButton btn = new JButton("Submit");
+         	btn.setForeground(new Color(255, 0, 0));
+         	btn.setFont(new Font("Tahoma", Font.BOLD, 20));
+         	btn.setBounds(566, 440, 136, 56);
+         	getContentPane().add(btn);
+         
+         
+}  
+public static void main(String args[])  
+    {  
+       new registration();  
+    }
+}  
