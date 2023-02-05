@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
+
  
 
-class registration extends JFrame 
+class registration extends JFrame implements ActionListener
 {
-     JTextField t1,t2,t3;  
+     JTextField t1,t2,t3;
+     String course[] = {"BIM", "BBA", "BBS", "BCA", "BBM"};
 	
         
           registration()
@@ -53,21 +56,48 @@ class registration extends JFrame
          	t2.setBounds(214, 227, 342, 49);
          	getContentPane().add(t2);
          	
-         	JComboBox combo = new JComboBox();
+         	JComboBox combo = new JComboBox(course);
          	combo.setFont(new Font("Tahoma", Font.BOLD, 17));
-         	combo.setModel(new DefaultComboBoxModel(new String[] {"BIM", "BBA", "BBS", "BCA", "BBM"}));
          	combo.setBounds(214, 362, 111, 49);
          	getContentPane().add(combo);
          	
          	JButton btn = new JButton("Submit");
          	btn.setForeground(new Color(255, 0, 0));
          	btn.setFont(new Font("Tahoma", Font.BOLD, 20));
-         	btn.setBounds(566, 440, 136, 56);
+         	btn.setBounds(589, 437, 136, 56);
          	getContentPane().add(btn);
+         	
+         	btn.addActionListener(this);
          
          
-}  
-public static void main(String args[])  
+} 
+          
+public void actionPerformed(ActionEvent e)
+{
+	 String name = t1.getText();
+	 String address = t2.getText();
+	 String cell = t3.getText();
+	 String faculty = combo.getSelectedItem();
+	 
+	 String url = "jdbc:mysql//localhost:3306/javaregistration";
+     String username = "root";
+	 String password = "pwd";
+	 
+	 try {
+		 class.forName("com.mysql.jdbc.Driver");
+		 Connection con = DriverManager.getConnection(url,username,password);
+		 Statement st = createStatement(con);
+		 Resultset rs = "insert into student values(+name+address+cell+faculty)";
+		 st.exceuteUpdate(rs);
+		 JOptionPane.showMessageDialog(this,"data stored successfully");
+		 con.close();
+	 }
+	 catch(exception ee) {
+		 JOptionPane.showMessageDialog(this, ee);
+	 }
+	 
+}
+public static void main(String args[])   
     {  
        new registration();  
     }
